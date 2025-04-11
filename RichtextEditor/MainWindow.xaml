@@ -27,14 +27,19 @@
                     <dxr:RibbonPageGroup Caption="HTML Tools">
                         <dxb:BarButtonItem Name="btnImportHtml" Content="Import HTML" ItemClick="btnImportHtml_ItemClick" LargeGlyph="{dx:DXImage SvgImages/PDF Viewer/Import.svg}"/>
                         <dxb:BarButtonItem Name="btnExportHtml" Content="Export HTML" ItemClick="btnExportHtml_ItemClick" LargeGlyph="{dx:DXImage SvgImages/Outlook Inspired/Icon_Export.svg}"/>
-                        <dxb:BarButtonItem Name="btnExit" Content="Exit" ItemClick="btnExit_ItemClick" />
+                        <dxb:BarButtonItem Name="btnExit" Content="Exit" ItemClick="btnExit_ItemClick" LargeGlyph="{dx:DXImage SvgImages/RichEdit/CloseHeaderAndFooter.svg}" />
                     </dxr:RibbonPageGroup>
                 </dxr:RibbonPage>
             </dxr:RibbonDefaultPageCategory>
         </dxr:RibbonControl>
 
 
-        <dxre:RichEditControl x:Name="richEditControl"/>
+        <dxre:RichEditControl x:Name="richEditControl">
+            <dxre:RichEditControl.AutoCorrectOptions>
+                <dxre:DXRichEditAutoCorrectOptions DetectUrls="False" UseSpellCheckerSuggestions="True" CorrectTwoInitialCapitals="True" />
+            </dxre:RichEditControl.AutoCorrectOptions>
+        </dxre:RichEditControl>
+        
 
 
     </DockPanel>

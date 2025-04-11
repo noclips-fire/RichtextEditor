@@ -16,6 +16,8 @@ using System.IO;
 using DevExpress.XtraRichEdit;
 using DevExpress.XtraRichEdit.API.Native;
 using Microsoft.Win32;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 
 namespace RichtextEditor
@@ -28,21 +30,7 @@ namespace RichtextEditor
         public MainWindow()
         {
             InitializeComponent();
-            
-        }
 
-        private void LoadHtmlDocument()
-        {
-            string filePath = "C:\\Users\\ginge\\OneDrive - Staatliches berufliches Schulzentrum Roth\\AE 2024-2025\\AE (WEB)\\01_vorlage_index_html5";
-
-            if (File.Exists(filePath))
-            {
-                richEditControl.LoadDocument(filePath, DevExpress.XtraRichEdit.DocumentFormat.Html);
-            }
-            else
-            {
-                MessageBox.Show("File existiet nicht.");
-            }
         }
 
         private void btnImportHtml_ItemClick(object sender, DevExpress.Xpf.Bars.ItemClickEventArgs e)
@@ -70,6 +58,12 @@ namespace RichtextEditor
                 Filter = "HTML files (*.html)|*.html"
             };
 
+            string imageFolder = System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Images");
+            if (!Directory.Exists(imageFolder))
+            {
+                Directory.CreateDirectory(imageFolder);
+            }
+
             if (saveFileDialog.ShowDialog() == true)
             {
                 using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
@@ -85,5 +79,7 @@ namespace RichtextEditor
         {
             Close();
         }
+
+        
     }
 }
